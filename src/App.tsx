@@ -51,13 +51,20 @@ function App() {
         }
     };
 
+    const deleteItemFromOrder = (menuItem: MenuType) => {
+        setItems(prevState => {
+            const updatedItems = prevState.filter(item => item.title !== menuItem.title);
+            return updatedItems;
+        });
+    };
+
     return (
         <div className="App">
             <div className="orderBlocks orderList">
                 <h3 className="title">Order Details</h3>
                 {
                     items.length > 0 ? items.map((item, index) => {
-                        return <OrderItem key={index} orderItems={item}/>
+                        return <OrderItem key={index} orderItems={item} deleteItemFromOrder={deleteItemFromOrder}/>
                     }) : (<div>Order is empty! <br/> Please add some one items!</div>)
                 }
             </div>

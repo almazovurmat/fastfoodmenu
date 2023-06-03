@@ -55,3 +55,12 @@
 .itemOrderName, .quantity, .priceOrder {
     margin-right: 20px;
 }
+
+.btn {
+    border: none;
+    background: #dc3545;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 700;
+}
