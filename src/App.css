@@ -1,3 +1,57 @@
-.App {
+* {
+    box-sizing: border-box;
+}
 
+.App {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+
+.orderBlocks {
+    position: relative;
+    border: 3px solid #777777;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.title {
+    position: absolute;
+    top: -43px;
+    padding: 10px;
+    background: white;
+}
+
+.orderList {
+    width: 35%;
+}
+
+.menuBlock {
+    width: 60%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.menuItem {
+    display: flex;
+    width: 45%;
+    border: 3px solid #777777;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.imgBlock img {
+    width: 75px;
+    height: 75px;
+}
+
+.itemOrderName, .quantity, .priceOrder {
+    margin-right: 20px;
 }
