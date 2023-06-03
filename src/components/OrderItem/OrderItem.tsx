@@ -1,9 +1,15 @@
 import React from 'react';
+import {OrderItemType} from "../../types/types";
 
-const OrderItem = () => {
+interface IProps {
+    orderItems: OrderItemType;
+}
+const OrderItem: React.FC<IProps> = ({orderItems}) => {
     return (
-        <div>
-            
+        <div className="itemOrder">
+            <span className="itemOrderName">{orderItems.title}</span>
+            <span className="quantity">{orderItems.quantity}</span>
+            <span className="priceOrder">{orderItems.price}</span>
         </div>
     );
 };

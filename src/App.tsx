@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import OrderItem from "./components/OrderItem/OrderItem";
+import {MenuType, OrderItemType} from "./types/types";
 import './App.css';
 import hamburger from './assets/images/hamburger-ic.png';
 import cheeseburger from './assets/images/cheeseburger-ic.png';
@@ -6,7 +8,6 @@ import fries from './assets/images/fries-ic.png';
 import coffee from './assets/images/coffee-ic.png';
 import tea from './assets/images/tea-ic.png';
 import coke from './assets/images/coke-ic.png';
-import {MenuType} from "./types/types";
 
 function App() {
     const MENU: MenuType[] = [
@@ -18,18 +19,56 @@ function App() {
         {title: "Coca Cola", price: 40, image: coke},
     ];
 
+    const [items, setItems] = useState <OrderItemType[]>([]);
+
+    const makeOrder = (menuItem: MenuType) => {
+        if (items.length === 0) {
+            const orderItem = [{...menuItem, quantity: 1}];
+            setItems(orderItem);
+        } else {
+            setItems(prevState => {
+                const itemIndex = prevState.findIndex(
+                    ingredient => ingredient.title === menuItem.title
+                );
+
+                if (itemIndex !== -1) {
+                    const updateOrderItem = [...prevState];
+                    if (updateOrderItem[itemIndex].quantity > 0) {
+                        updateOrderItem[itemIndex] = {
+                            ...updateOrderItem[itemIndex],
+                            quantity: updateOrderItem[itemIndex].quantity + 1,
+                            price: (updateOrderItem[itemIndex].quantity + 1) * menuItem.price,
+                        };
+                        return updateOrderItem;
+                    }
+                } else {
+                    const orderItem = {...menuItem, quantity: 1};
+                    const updateOrderItem = [...prevState, orderItem];
+                    return updateOrderItem;
+                }
+                return [...prevState];
+            });
+        }
+    };
+
     return (
         <div className="App">
             <div className="orderBlocks orderList">
                 <h3 className="title">Order Details</h3>
-
+                {
+                    items.length > 0 ? items.map((item, index) => {
+                        return <OrderItem key={index} orderItems={item}/>
+                    }) : (<div>Order is empty! <br/> Please add some one items!</div>)
+                }
             </div>
             <div className="orderBlocks menuBlock">
                 <h3 className="title">Add items</h3>
                 <div className="menu">
                     {
                         MENU.map((menu: MenuType, index: number) => (
-                            <div key={index} className="menuItem">
+                            <div key={index} className="menuItem" onClick={() => {
+                                makeOrder(menu);
+                            }}>
                                 <span className="imgBlock">
                                     <img src={menu.image} alt={menu.title}/>
                                 </span>
