@@ -4,10 +4,11 @@
 }
 
 .App {
-    width: 1400px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
     padding-top: 50px;
 }
 
@@ -30,18 +31,18 @@
 }
 
 .menuBlock {
-    width: 60%;
+    width: 50%;
 }
 
 .menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
 .menuItem {
     display: flex;
-    width: 45%;
+    width: 300px;
     border: 3px solid #777777;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -107,4 +108,37 @@
 
 .priceItem {
     margin: 0;
+}
+
+@media screen and (max-width: 996px) {
+    .itemOrderName {
+        width: 40%;
+    }
+
+    .quantity {
+        width: 10%;
+    }
+
+    .priceOrder {
+        width: 20%;
+    }
+
+    .App {
+        margin: 0 50px;
+    }
+
+    .menuItem {
+        width: 400px;
+    }
+
+    .orderList {
+        width: 100%;
+        order: 2;
+    }
+
+    .menuBlock {
+        width: 100%;
+        order: 1;
+        margin-bottom: 50px;
+    }
 }
