@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
 }
 
 .App {
@@ -50,10 +51,7 @@
 .imgBlock img {
     width: 75px;
     height: 75px;
-}
-
-.itemOrderName, .quantity, .priceOrder {
-    margin-right: 20px;
+    margin:0 20px;
 }
 
 .btn {
@@ -63,4 +61,50 @@
     padding: 10px;
     border-radius: 10px;
     font-weight: 700;
+}
+
+.totalPrice {
+    margin-top: 40px;
+    border-top: 2px solid #777777;
+    padding-top: 10px;
+    text-align: right;
+}
+
+.itemOrder {
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+.itemOrderName, .quantity, .priceOrder {
+    font-weight: 600;
+    display: inline-block;
+    line-height: 35px;
+}
+
+.itemOrderName {
+    width: 65%;
+}
+
+.quantity {
+    width: 10%;
+}
+
+.priceOrder {
+    width: 20%;
+}
+
+.emptyOrder {
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.titleItem {
+    margin: 10px 0 10px;
+    font-size: 22px;
+}
+
+.priceItem {
+    margin: 0;
 }

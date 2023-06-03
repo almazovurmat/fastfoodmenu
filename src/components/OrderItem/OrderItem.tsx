@@ -14,8 +14,8 @@ const OrderItem: React.FC<IProps> = ({orderItems, deleteItemFromOrder}) => {
     return (
         <div className="itemOrder">
             <span className="itemOrderName">{orderItems.title}</span>
-            <span className="quantity">{orderItems.quantity}</span>
-            <span className="priceOrder">{orderItems.price}</span>
+            <span className="quantity">x {orderItems.quantity}</span>
+            <span className="priceOrder">{orderItems.price} KGS</span>
             <button className="btn" onClick={deleteItem}>X</button>
         </div>
     );

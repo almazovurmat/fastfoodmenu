@@ -8,13 +8,14 @@ import fries from './assets/images/fries-ic.png';
 import coffee from './assets/images/coffee-ic.png';
 import tea from './assets/images/tea-ic.png';
 import coke from './assets/images/coke-ic.png';
+import TotalPrice from "./components/TotalPrice/TotalPrice";
 
 function App() {
     const MENU: MenuType[] = [
-        {title: "Humburger", price: 80, image: hamburger},
+        {title: "Hamburger", price: 80, image: hamburger},
         {title: "Coffee", price: 70, image: coffee},
         {title: "Cheeseburger", price: 90, image: cheeseburger},
-        {title: "Tes", price: 50, image: tea},
+        {title: "Tea", price: 50, image: tea},
         {title: "Fries", price: 45, image: fries},
         {title: "Coca Cola", price: 40, image: coke},
     ];
@@ -65,7 +66,10 @@ function App() {
                 {
                     items.length > 0 ? items.map((item, index) => {
                         return <OrderItem key={index} orderItems={item} deleteItemFromOrder={deleteItemFromOrder}/>
-                    }) : (<div>Order is empty! <br/> Please add some one items!</div>)
+                    }) : (<div className="emptyOrder">Order is empty! <br/> Please add some one items!</div>)
+                }
+                {
+                    <TotalPrice items={items} />
                 }
             </div>
             <div className="orderBlocks menuBlock">
